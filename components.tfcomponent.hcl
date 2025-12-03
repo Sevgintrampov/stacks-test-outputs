@@ -16,3 +16,26 @@ output "pet_name" {
   type        = list(string) 
   value       = component.pet.random_pet_kind 
 }
+# This mimics a resource output
+output "aks_cluster_data" {
+  description = "Hardcoded complex map of cluster details"
+  type        = object(map)
+  value = {
+    "cluster-primary" = {
+      current_kubernetes_version = {
+        "1" = "1.33.5"
+      }
+      id = {
+        "1" = "/subscriptions/123/resourceGroups/rg/providers/Microsoft.ContainerService/managedClusters/aks"
+      }
+    }
+    "cluster-secondary" = {
+      current_kubernetes_version = {
+        "1" = "1.32.0"
+      }
+      id = {
+        "1" = "/subscriptions/456/resourceGroups/rg/providers/Microsoft.ContainerService/managedClusters/aks-dr"
+      }
+    }
+  }
+}
