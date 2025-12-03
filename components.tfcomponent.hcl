@@ -18,23 +18,16 @@ output "pet_name" {
 }
 # This mimics a resource output
 output "aks_cluster_data" {
-  description = "Hardcoded complex map of cluster details"
+  # The type must be fully defined for Stacks to accept it
+  type = map(object({
+    current_kubernetes_version = map(string)
+    id                         = map(string)
+  }))
+
   value = {
-    "cluster-primary" = {
-      current_kubernetes_version = {
-        "1" = "1.33.5"
-      }
-      id = {
-        "1" = "/subscriptions/123/resourceGroups/rg/providers/Microsoft.ContainerService/managedClusters/aks"
-      }
-    }
-    "cluster-secondary" = {
-      current_kubernetes_version = {
-        "1" = "1.32.0"
-      }
-      id = {
-        "1" = "/subscriptions/456/resourceGroups/rg/providers/Microsoft.ContainerService/managedClusters/aks-dr"
-      }
+    "cluster-01" = {
+      current_kubernetes_version = { "1" = "1.33.5" }
+      id                         = { "1" = "/subscriptions/id/resourceGroups/rg/providers/Microsoft.ContainerService/managedClusters/aks" }
     }
   }
 }
