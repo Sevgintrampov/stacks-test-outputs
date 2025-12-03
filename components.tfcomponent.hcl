@@ -19,7 +19,6 @@ output "pet_name" {
 # This mimics a resource output
 output "aks_cluster_data" {
   description = "Hardcoded complex map of cluster details"
-  type        = object(map)
   value = {
     "cluster-primary" = {
       current_kubernetes_version = {
