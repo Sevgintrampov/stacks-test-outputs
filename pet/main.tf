@@ -1,4 +1,5 @@
 resource "random_pet" "pet" {
+count = 5
  }
 
 output "random_pet_kind" {
